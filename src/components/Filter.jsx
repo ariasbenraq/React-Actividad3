@@ -1,13 +1,13 @@
-import Form from 'react-bootstrap/Form';
-import InputGroup from 'react-bootstrap/InputGroup';
-import { useState, useEffect } from 'react';
-import data from '../PostList.json'
-import Card from 'react-bootstrap/Card';
-import Toast from 'react-bootstrap/Toast';
-import LikeCount from './LikeCount';
+// import Form from 'react-bootstrap/Form';
+// import InputGroup from 'react-bootstrap/InputGroup';
+import { useState} from 'react';
+// import data from '../PostList.json'
+// import Card from 'react-bootstrap/Card';
+// import Toast from 'react-bootstrap/Toast';
+// import LikeCount from './LikeCount';
 import { User } from '../services/Datos';
 import Content from './Post';
-import { getList } from '../services/PostListServices';
+// import { getList } from '../services/PostListServices';
 
 
 function Filter({ post }) {
