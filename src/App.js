@@ -8,24 +8,32 @@ import PostArchive from './components/PostArchive';
 import ProfilePage from './components/ProfilePage';
 import { BrowserRouter as Router, Route, Routes, } from 'react-router-dom';
 import ItemList from './components/Items';
+import Login from './components/Login';
 
 
 
 function App() {
-
-return (
-  <>
-   
-    <Router>
-      <Header />
-      <Routes>
-        <Route exact path="/ProfilePage" element={<ProfilePage />} />
-        <Route path="/PostArchive" element={<PostArchive />} />
-        <Route path="/Items" element={<ItemList />} />
-      </Routes>
-    </Router>
-  </>
-);
+  const [token, setToken] = useState(localStorage.getItem("token"));
+  return (
+    <>
+      <div > 
+        {token ? (
+          <>           
+            <Router>
+            <Header />
+              <Routes>
+                <Route exact path="/ProfilePage" element={<ProfilePage />} />
+                <Route path="/PostArchive" element={<PostArchive />} />
+                <Route path="/Items" element={<ItemList />} />
+              </Routes>
+            </Router>
+          </>
+        ) : (
+          <Login setToken={setToken} />
+        )}
+      </div>
+    </>
+  );
 }
 
 export default App;
