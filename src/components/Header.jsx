@@ -3,13 +3,13 @@ import Navbar from 'react-bootstrap/Navbar';
 import UserLogo from '../imagenes/user-solid.svg'
 import { Link } from 'react-router-dom';
 
-const title = "Semana 3";
+const title = "Semana 4";
 
 function Header() {
     return (
         <Navbar className="px-3" bg="light" expand="lg">
           <Container>
-            <Link to="/Items">
+            <Link to="/Items"  className='nav-link'>
               <Navbar.Brand>{title}</Navbar.Brand>
             </Link>
             <Link to="/ProfilePage">           

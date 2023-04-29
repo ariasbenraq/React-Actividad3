@@ -3,8 +3,8 @@ import Container from 'react-bootstrap/Container';
 import { Link } from 'react-router-dom';
 
 
-function ProfilePage() {
 
+function ProfilePage() {
 
   const profileData = {
     id:1,
@@ -25,7 +25,12 @@ function ProfilePage() {
           <p>Age: {profileData.age}</p>
           <p>Occupation: {profileData.occupation}</p>
           <p>Bio: {profileData.bio}</p>
-          <Link to="/PostArchive">Home</Link>
+          <button type='button' className='btn btn-warning'>
+          <Link to="/PostArchive" className='link-light link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover nav-link'>
+           Home
+          </Link>
+          </button>
+          
         </div>
       </Container>
 

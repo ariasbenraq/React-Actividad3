@@ -19,7 +19,7 @@ function Login({ setToken }) {
   }
 
   return (
-    <div>
+    <div className="mt-5 d-flex justify-content-center">
       {error && <div className="alert alert-danger">{error}</div>}
       <form onSubmit={handleSubmit}>
         <input

@@ -2,7 +2,8 @@ import { useState, useEffect } from 'react';
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { getList } from "../services/PostListServices";
-import Header from './Header';
+
+// import Header from './Header';
 
 function ItemList() {
 
@@ -32,7 +33,11 @@ function ItemList() {
             })
         }
       </div>
-      <div className='text-center mt-3'><Link to="/PostArchive">Home</Link></div>
+      <div className='text-center mt-3'>
+        <button type="button" className="btn btn-warning" >
+        <Link to="/PostArchive" className='link-light link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover nav-link'>Home</Link>
+        </button>
+        </div>
     </>
   );
 }

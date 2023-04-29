@@ -4,13 +4,13 @@ import Content from './Post';
 
 
 
-function PostArchive({post}) {
-  const [searchTerm, setSearchTerm] = useState([]);
+function PostArchive({query}) {
+  const [post, setPost] = useState([]);
 
 
   useEffect(() => {
     getList().then((data) => {
-      setSearchTerm(data);
+      setPost(data);
     });
   }, []);
 
@@ -18,17 +18,21 @@ function PostArchive({post}) {
     <>
       <div className="templateContainer">
         {
-          searchTerm
-            .filter((search) => search.post === post)
-            .map((search, i) => (
+          post
+          .filter((post) => {
+            return query.toLowerCase() === ''
+              ? post
+              : post.autor.toLowerCase().includes(query) || post.coments.toLowerCase().includes(query)
+          })
+            .map((post, i) => (
               <Content
                 key={i}
-                img={search.image}
-                nombre={search.autor}
-                creado={search.creted}
-                texto={search.text}
-                tarjeta={search.cardtext}
-                comentario={search.coments}
+                img={post.image}
+                nombre={post.autor}
+                creado={post.creted}
+                texto={post.text}
+                tarjeta={post.cardtext}
+                comentario={post.coments}
               />
             ))}
       </div>

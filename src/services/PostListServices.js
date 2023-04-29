@@ -5,7 +5,7 @@ export function getList() {
     return new Promise((resolve) => {
         setTimeout(() => {
             resolve(data);
-        }, Math.random() * 3000);
+        }, Math.random() * 1000);
     });
 }
 
