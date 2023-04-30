@@ -3,27 +3,38 @@ import { getList } from '../services/PostListServices';
 import Content from './Post';
 
 
-
-function PostArchive({query}) {
+function PostArchive({ query }) {
   const [post, setPost] = useState([]);
-
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    getList().then((data) => {
-      setPost(data);
-    });
+    const interval = setInterval(() => {
+      getList().then((data) => {
+        setPost(data);
+        setLoading(false);
+      })
+    }, 1000);
+
+    return () => {
+      clearInterval(interval);
+    }
   }, []);
+
 
   return (
     <>
-      <div className="templateContainer">
-        {
-          post
-          .filter((post) => {
-            return query.toLowerCase() === ''
-              ? post
-              : post.autor.toLowerCase().includes(query) || post.coments.toLowerCase().includes(query)
-          })
+      {loading ? (
+        <p className="d-flex justify-content-center align-items-center p-5 fs-4 fw-bold">
+          Loading...
+        </p>
+      ) : (
+        <>
+          {post
+            .filter((post) => {
+              return query.toLowerCase() === ''
+                ? post
+                : post.autor.toLowerCase().includes(query) || post.coments.toLowerCase().includes(query)
+            })
             .map((post, i) => (
               <Content
                 key={i}
@@ -35,9 +46,11 @@ function PostArchive({query}) {
                 comentario={post.coments}
               />
             ))}
-      </div>
+        </>
+      )}
     </>
-  )
+  );
 }
+
 
 export default PostArchive;
