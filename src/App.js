@@ -3,8 +3,8 @@ import './App.css';
 import Header from './components/Header';
 import 'bootstrap/dist/css/bootstrap.min.css'
 import PostArchive from './components/PostArchive';
-import ProfilePage from './components/ProfilePage';
-import { BrowserRouter as Router, Route, Routes, } from 'react-router-dom';
+import ProfilePage from './pages/ProfilePage';
+import { Route, Routes, } from 'react-router-dom';
 import ItemList from './components/Items';
 import Login from './components/Login';
 import SearchBar from './components/SearchBar';
@@ -20,7 +20,6 @@ function App() {
       <div>
         {token ? (
           <>
-            <Router>
               <Header />
               <SearchBar setQuery={setQuery} />
               <Routes>
@@ -28,7 +27,6 @@ function App() {
                 <Route path="/PostArchive" element={<PostArchive query={query} />} />
                 <Route path="/Items" element={<ItemList />} />
               </Routes>
-            </Router>
           </>
         ) : (
           <Login setToken={setToken} />

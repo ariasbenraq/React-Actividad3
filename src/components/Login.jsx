@@ -1,5 +1,8 @@
 import { useState } from "react";
 import { login } from "../services/PostListServices";
+import Container from 'react-bootstrap/Container';
+import Navbar from 'react-bootstrap/Navbar';
+import Header from "./Header";
 
 function Login({ setToken }) {
   const [error, setError] = useState();
@@ -19,6 +22,10 @@ function Login({ setToken }) {
   }
 
   return (
+<div>
+<Header/>
+</div>
+
     <div className="mt-5 d-flex justify-content-center">
       {error && <div className="alert alert-danger">{error}</div>}
       <form onSubmit={handleSubmit}>
